@@ -1,0 +1,13 @@
+{
+    "name": "K10.Entities.Editor",
+    "references": [
+        "K10.Entities",
+        "K10.Editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

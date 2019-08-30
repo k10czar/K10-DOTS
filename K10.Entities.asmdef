@@ -1,0 +1,22 @@
+{
+    "name": "K10.Entities",
+    "references": [
+        "Unity.Entities",
+        "Unity.Jobs",
+        "Unity.Burst",
+        "Unity.Transforms",
+        "Unity.Transforms.Hybrid",
+        "Unity.Entities.Hybrid",
+        "Unity.Collections",
+        "Unity.Mathematics",
+        "K10"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
