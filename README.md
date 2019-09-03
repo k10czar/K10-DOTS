@@ -10,8 +10,8 @@ Used on [**Relic Hunters Legend**](https://www.relichunters.com.br)
 
 #### First add the submodule dependency
 
-``git submodule add https://github.com/k10czar/K10.git "Assets/Standard Assets/K10"``
+``git submodule add https://github.com/k10czar/K10.git "Assets/Plugins/K10"``
 
 #### The add the DOTS Lib submodule
 
-``git submodule add https://github.com/k10czar/K10-DOTS.git "Assets/Standard Assets/K10 DOTS"``
+``git submodule add https://github.com/k10czar/K10-DOTS.git "Assets/Plugins/K10DOTS"``
