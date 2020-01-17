@@ -33,7 +33,7 @@ public sealed class ScreenVisibilityCheckSystem : ComponentSystem
 	[BurstCompile]
 	struct Job : IJobParallelFor
 	{
-		const float TOLERANCE = 0.1f;
+		const float TOLERANCE = 0.34f;
 		const float MIN_TOLERANCE = -MAX_TOLERANCE;
 		const float MAX_TOLERANCE = 1 + TOLERANCE;
 
