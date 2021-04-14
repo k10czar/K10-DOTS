@@ -12,6 +12,10 @@ public class ScreenVisibility : MonoBehaviour
 	private readonly Semaphore _canShow = new Semaphore();
 	public ISemaphore CanShow => _canShow;
 
+	private readonly StateRequester _lockValue = new StateRequester();
+	public IStateRequesterInfo LockValueState => _lockValue;
+	private bool _lockedValue;
+
 	private void Awake()
 	{
 		_canShow.OnFalseState.Register( () => UpdateVisibility(false) );
@@ -32,12 +36,22 @@ public class ScreenVisibility : MonoBehaviour
 	{
 		_viewportPosition = viewportPosition;
 
-		bool becomeVisible = (isVisible && CanShow.Free) || (isVisible && ignoreCanShow);
+		bool becomeVisible = _lockValue.Requested ? _lockedValue : ( isVisible && CanShow.Free) || (isVisible && ignoreCanShow);
 		UpdateVisibility( becomeVisible );
 	}
 
 	void UpdateVisibility(bool becomeVisible )
 	{
 		_isVisible.Setter( becomeVisible );
+	}
+
+	public void LockValue(bool lockedValue, object key)
+	{
+		_lockValue.Request( key );
+		_lockedValue = lockedValue;
+	}
+
+	public void RemoveLockValue(object key){
+		_lockValue.RemoveRequest( key );
 	}
 }
