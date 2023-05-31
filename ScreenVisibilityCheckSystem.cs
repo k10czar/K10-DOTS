@@ -51,10 +51,7 @@ public sealed class ScreenVisibilityCheckSystem : ComponentSystem
 			var temp = math.mul(worldToScreenTransform, wPos);
 			var vPos = new float3(temp.x / temp.w, temp.y / temp.w, temp.z);
 			this.vPos[i] = vPos;
-
-			visible[i] = (vPos.z > 0 &&
-							vPos.z < farClip &&
-							vPos.x > MIN_TOLERANCE &&
+			visible[i] = (vPos.x > MIN_TOLERANCE &&
 							vPos.x < MAX_TOLERANCE &&
 							vPos.y > MIN_TOLERANCE &&
 							vPos.y < MAX_TOLERANCE) ?
