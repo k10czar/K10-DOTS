@@ -68,6 +68,7 @@ public sealed class ScreenVisibilityCheckSystem : ComponentSystem
 	{
 		if (_mainCamera == null) _mainCamera = Camera.main;
 		var camera = _mainCamera;
+		if (camera == null) return;
 
 		var mat = camera.projectionMatrix * camera.worldToCameraMatrix;
 
