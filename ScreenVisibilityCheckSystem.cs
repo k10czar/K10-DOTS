@@ -64,11 +64,19 @@ public sealed class ScreenVisibilityCheckSystem : ComponentSystem
 	public static bool Add(ScreenVisibility element) => _entities.Add(element);
 	public static void Remove(ScreenVisibility element) => _entities.Remove(element);
 
+	bool _cameraWasNull = false;
 	protected override void OnUpdate()
 	{
 		if (_mainCamera == null) _mainCamera = Camera.main;
 		var camera = _mainCamera;
-		if (camera == null) return;
+
+		if( camera == null ) 
+		{
+			if( !_cameraWasNull ) Debug.LogError( $"{"ScreenVisibilityCheckSystem".Colorfy( Colors.Console.TypeName )} {"CANNOT".Colorfy( Colors.Console.Danger )} find camera to calculate, so is {"NOT".Colorfy( Colors.Console.Danger )} running" );
+			_cameraWasNull = true;
+			return;
+		}
+		_cameraWasNull = false;
 
 		var mat = camera.projectionMatrix * camera.worldToCameraMatrix;
 
