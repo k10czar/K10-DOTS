@@ -76,7 +76,11 @@ public sealed class ScreenVisibilityCheckSystem : ComponentSystem
 			_cameraWasNull = true;
 			return;
 		}
-		_cameraWasNull = false;
+		if (_cameraWasNull)
+		{
+			Debug.Log( $"{"ScreenVisibilityCheckSystem".Colorfy( Colors.Console.TypeName )} found camera to calculate and is running again" );
+			_cameraWasNull = false;
+		}
 
 		var mat = camera.projectionMatrix * camera.worldToCameraMatrix;
 
